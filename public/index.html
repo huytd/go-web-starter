@@ -1,9 +1,25 @@
 <html>
 	<head>
-		<title>GoProj</title>
-		<link href="css/style.css" rel="stylesheet" />					
+		<title>Go Notes</title>
+		<link href="css/style.css" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Hello World!</h1>
+		<h1>My Notes</h1>
+		<form method="POST" action="/add" class="frm-add">
+			<input type="text" name="Message" placeholder="what's in your mind?"></input>
+			<input type="submit" value="SAVE"></input>
+		</form>
+		<ul class="notes">
+			{{range .data}}
+			<li>
+				<span class="message">{{.Message}}</span>
+				<span class="date">{{.CreatedAt.Format "2006-01-02 3:04"}}</span>
+				<form class="delete" method="POST" action="/delete">
+					<input type="hidden" name="ID" value="{{.ID}}"></input>
+					<input type="submit" value="x"></input>
+				</form>
+			</li>
+			{{end}}
+		</ul>
 	</body>
 </html>

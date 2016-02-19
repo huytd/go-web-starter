@@ -1,5 +1,85 @@
+* {
+	font-family: "Monaco", "Lucia Console", Tahoma;
+}
+
 html, body {
 	background: #FAFAFA;
 	color: #000;
-	font-family: "Monaco", "Lucia Console", Tahoma;
+}
+
+input {
+	outline: none;
+}
+
+.frm-add {
+	background: #CECECE;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
+.frm-add input[type='text'] {
+	flex-basis: 90%;
+	padding: 5px;
+	font-size: 20px;
+	border: none;
+}
+
+.frm-add input[type='submit'] {
+	flex: 1;
+	padding: 5px;
+	font-size: 20px;
+	border: none;
+	color: #FFF;
+	background: #d35400;
+	cursor: pointer;
+}
+
+.frm-add input[type='submit']:hover {
+	background: #e67e22;
+}
+
+.notes {
+	margin: 0; padding: 10;
+	list-style: none;
+}
+
+.notes li {
+	background: #ECECEC;
+	padding: 10px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.notes li .message {
+	clear: both;
+	display: block;
+}
+
+.notes li .date {
+	display: block;
+	clear: both;
+	font-size: 0.6em;
+	color: #888;
+}
+
+.notes li .delete {
+	position: absolute;
+	top: 15px; right: 15px;
+	width: 24px; height: 24px;
+	margin: 0; padding: 0;
+}
+
+.notes li .delete input[type='submit'] {
+	border: none;
+	width: 24px; height: 25px;
+	background: #CCC;
+	color: #FFF;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.notes li .delete input[type='submit']:hover {
+	background: #e74c3c;
 }
