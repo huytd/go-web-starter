@@ -26,7 +26,7 @@ func (a *AppController) Home(c *gin.Context) {
 func (a *AppController) Add(c *gin.Context) {
 	var post = Post{Message: c.PostForm("Message")}
 	a.db.Create(&post)
-	c.Redirect(http.StatusMovedPermanently, "/")
+	c.Redirect(http.StatusMovedPermanently, c.Request.Header.Get("HTTP_REFERER"))
 }
 
 // Delete a post
@@ -34,5 +34,5 @@ func (a *AppController) Delete(c *gin.Context) {
 	id, _ := strconv.Atoi(c.PostForm("ID"))
 	var post = Post{ID: id}
 	a.db.Delete(&post)
-	c.Redirect(http.StatusMovedPermanently, "./")
+	c.Redirect(http.StatusMovedPermanently, c.Request.Header.Get("HTTP_REFERER"))
 }
