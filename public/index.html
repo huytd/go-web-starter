@@ -14,7 +14,7 @@
 			<li>
 				<span class="message">{{.Message}}</span>
 				<span class="date">{{.CreatedAt.Format "2006-01-02 3:04"}}</span>
-				<form class="delete" method="POST" action="/delete">
+				<form class="delete" method="POST" action="./delete">
 					<input type="hidden" name="ID" value="{{.ID}}"></input>
 					<input type="submit" value="x"></input>
 				</form>
