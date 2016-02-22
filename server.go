@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
@@ -10,6 +11,7 @@ import (
 
 // Server class
 type Server struct {
+	ssl []string
 }
 
 // Start server, all route come here
@@ -34,5 +36,11 @@ func (s *Server) Start(DBUSER string, DBPWD string, DBNAME string) {
 	router.POST("/add", app.Add)
 	router.POST("/delete", app.Delete)
 
-	router.Run(":8000")
+	// Start HTTP server
+	http.ListenAndServe(":8000", router)
+
+	// Start HTTPS server as well
+	if len(s.ssl) > 0 {
+		http.ListenAndServeTLS(":8001", s.ssl[0], s.ssl[1], router)
+	}
 }
