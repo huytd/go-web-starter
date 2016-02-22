@@ -34,5 +34,5 @@ func (a *AppController) Delete(c *gin.Context) {
 	id, _ := strconv.Atoi(c.PostForm("ID"))
 	var post = Post{ID: id}
 	a.db.Delete(&post)
-	c.Redirect(http.StatusMovedPermanently, "/")
+	c.Redirect(http.StatusMovedPermanently, "./")
 }
