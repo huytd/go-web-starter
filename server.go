@@ -17,7 +17,11 @@ func (s *Server) Start(DBUSER string, DBPWD string, DBNAME string) {
 	var connString = fmt.Sprintf("user=%s dbname=%s sslmode=disable", DBUSER, DBNAME)
 	DB, _ := gorm.Open("postgres", connString)
 
-	DB.CreateTable(&Post{})
+	if ok := DB.HasTable("posts"); ok {
+		fmt.Println("Checking DB.Post OK!")
+	} else {
+		DB.CreateTable(&Post{})
+	}
 
 	var router = gin.Default()
 	var app = &AppController{db: DB}
