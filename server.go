@@ -37,7 +37,9 @@ func (s *Server) Start(DBUSER string, DBPWD string, DBNAME string) {
 	router.POST("/delete", app.Delete)
 
 	// Start HTTP server
-	http.ListenAndServe(":8000", router)
+	go func() {
+		http.ListenAndServe(":8000", router)
+	}()
 
 	// Start HTTPS server as well
 	if len(s.ssl) > 0 {
